@@ -4,7 +4,7 @@ require 'sinatra/reloader' if development?
 require 'pg'
 require 'sinatra/activerecord'
 
-set :database, {adapter: 'postgresql', database: 'reddit_db', host: 'localhost'}
+set :database, {adapter: 'postgresql', database: 'reddit-db', host: 'localhost'}
 
 class SubReddit < ActiveRecord::Base
   has_many :submissions
@@ -17,32 +17,37 @@ end
 
 class Comment < ActiveRecord::Base
   belongs_to :submission
+  has_many :subcomments
+end
+
+class SubComment < ActiveRecord::Base
+  belongs_to :comment
 end
 
 # Home - Shows the most popular submissions from all subreddits
-get `/` do
+get "/" do
 end
 
 # Shows form for creating a new subreddit
-get `/new` do
+get "/new" do
 end
 
 # Shows newest submissions from all subreddits
-get `/newest` do
+get "/newest" do
 end
 
 # Shows the most popular submissions from a specific subreddit
-get `/r/sub-reddit-name` do
+get "/r/sub-reddit-name" do
 end 
 
 # Shows newest submissions for this subreddit
-get `/r/sub-reddit-name/newest` do 
+get "/r/sub-reddit-name/newest" do 
 end
 
 # Shows form for creating new submission to a subreddit
-get `/r/sub-reddit-name/new` do
+get "/r/sub-reddit-name/new" do
 end
 
 # Shows a specific submission's comment page in a specific subreddit. Maybe you can add new comments from a form here?
-get `/r/sub-reddit-name/submission-name` do 
+get "/r/sub-reddit-name/submission-name" do 
 end
