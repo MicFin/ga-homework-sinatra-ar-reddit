@@ -42,23 +42,41 @@ get "/new/:id/submission/" do
   erb :create_submission
 end
 
-# Shows the most popular submissions from a specific subreddit
+# shows form to create a submission
+get "/new/:id/comment/" do
+  @submission = Submission.find(params[:id])
+  erb :create_comment
+end
+
+# Subreddit - Shows the most popular submissions from a specific subreddit
 get "/reddit/:id/" do
   @subreddit = Subreddit.find(params[:id])
   erb :subreddit_view
 end 
 
+# Submission - Shows the most popular comments on a specific submission
+get "/reddit/submission/:id/" do
+  @submission = Submission.find(params[:id])
+  erb :submission_view
+end 
+
+# creates a new subreddit
 post '/create/' do
   Subreddit.create(title: params[:title])
   redirect "/reddit/"
 end
 
+# creates a new submission
 post '/create/:id/submission/' do
   @subreddit = Subreddit.find(params[:id])
   @subreddit.submissions.create(title: params[:title], body: params[:body], link:params[:link])
   redirect "/reddit/"
 end
 
-
+post '/create/:id/comment/' do
+  @submission = Submission.find(params[:id])
+  @submission.comments.create(title: params[:title], body: params[:body])
+  redirect "/reddit/"
+end
 
 

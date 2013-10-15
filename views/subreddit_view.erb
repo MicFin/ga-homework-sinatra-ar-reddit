@@ -5,7 +5,7 @@
 <div class="submission-container">
 <ol>
 <li><% @subreddit.submissions.each do |submission| %>
-	<a href="/reddit/submission/:id/"><%=submission.title%></a>
+	<a href="/reddit/submission/<%=submission.id%>/"><%=submission.title%></a>
 	<%=submission.body%>
 </li>
 <%end%>

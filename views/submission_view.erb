@@ -1,0 +1,17 @@
+<h1>Reddit</h1>
+<h2><%=@submission.subreddit.title%></h2>
+<h3><%=@submission.title%></h3>
+<h4><%=@submission.body%></h4>
+<!-- #change link -->
+<a href='/new/<%=@submission.id%>/comment/'>Create Comment</a>
+
+<div class="submission-container">
+<ol>
+<% @submission.comments.each do |comment| %>
+<li>	
+<%=comment.title%></br>
+<%=comment.body%>
+</li>
+<%end%>
+</ol>
+</div>
