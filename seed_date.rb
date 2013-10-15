@@ -8,3 +8,4 @@
 
   Comment.new("He Sux", "BIG PAPI IS A FAT HO")
   Comment.new("I LOVE BRADY", "that is the way you do it")
+
