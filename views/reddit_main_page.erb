@@ -2,9 +2,13 @@
 <a href='/new/'>Create SubReddit</a>
 
 <div class="subreddit-container">
-<% @subreddits.each do |subreddit| %>
-<h2><%= subreddit.title %></h2>
-</br>
+
+<ul>
+<li><% @subreddits.each do |subreddit| %>
+	<form action="/r/<%=subreddit.title%>/" method="post">
+	<input type="submit" name="subreddit" value="<%=subreddit.title%>" />
+	</form>
+</li>
 <%end%>
 </div>
 
