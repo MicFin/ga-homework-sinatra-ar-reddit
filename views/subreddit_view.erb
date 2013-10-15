@@ -4,7 +4,8 @@
 
 <div class="submission-container">
 <ol>
-<li><% @subreddit.submissions.each do |submission| %>
+<% @subreddit.submissions.each do |submission| %>
+<li>
 	<a href="/reddit/submission/<%=submission.id%>/"><%=submission.title%></a>
 	<%=submission.body%>
 
@@ -15,9 +16,6 @@
 	<form action="/submission/<%=submission.id%>/downvote/" method="post">
 	<input type="submit" name="down_vote" value="HATE IT: <%=submission.down_votes%>" />
 	</form>
-
-
-
 
 
 </li>
