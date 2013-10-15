@@ -18,6 +18,15 @@
 	<%@submissions.each do |submission|%>
 		<li>
 			<%=submission.title%>: <%=submission.body%> <%=submission.link%>
+
+	<form action="/submission/<%=submission.id%>/upvote/" method="post">
+	<input type="submit" name="up_vote" value="LOVE IT: <%=submission.up_votes%>" />
+	</form>
+
+	<form action="/submission/<%=submission.id%>/downvote/" method="post">
+	<input type="submit" name="down_vote" value="HATE IT: <%=submission.down_votes%>" />
+	</form>
+			
 			</li>
 			<%end%>
 	</ol>
