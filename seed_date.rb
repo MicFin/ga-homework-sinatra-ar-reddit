@@ -10,28 +10,21 @@
   Comment.new("I LOVE BRADY", "that is the way you do it")
 
 # Shows form for creating a new subreddit
-get "/new/" do
-  erb :create_subreddit
-end
+
 
 # # Shows newest submissions from all subreddits
 # get "/newest" do
 #   erb :
 # end
 
-# post '/create/' do
-#   SubReddit.create(title: params[:title])
-#   redirect "/reddit/"
-# end
+
 
 # post '/posts/comment/:id/create' do
 #  @subreddit = SubReddit.find(params[:id])
 #  @subreddit.submissions.create(title: params[:title], body: params[:body])
 #   redirect "/"
 # end
-# # Shows the most popular submissions from a specific subreddit
-# get "/r/sub-reddit-name" do
-# end 
+
 
 # # Shows newest submissions for this subreddit
 # get "/r/sub-reddit-name/newest" do 

@@ -1,14 +1,27 @@
 <h1>Reddit</h1>
 <a href='/new/'>Create SubReddit</a>
 
-<div class="subreddit-container">
-
-<ul>
-<li><% @subreddits.each do |subreddit| %>
-	<form action="/r/<%=subreddit.title%>/" method="post">
-	<input type="submit" name="subreddit" value="<%=subreddit.title%>" />
-	</form>
-</li>
-<%end%>
+<div class="subreddits-container">
+	<ol class="subreddits-list">
+	<% @subreddits.each do |subreddit| %>
+		<li>
+			<form action="/reddit/<%=subreddit.id%>/" method="get">
+			<input type="submit" name="<%=subreddit.id%>" value="<%=subreddit.title%>" />
+			</form>
+		</li>
+		<%end%>
+	</ol>
 </div>
+
+<div class="submissions-container">
+	<ol class="submissions-list">
+	<%@submissions.each do |submission|%>
+		<li>
+			<%=submission.title%>: <%=submission.body%> <%=submission.link%>
+			</li>
+			<%end%>
+	</ol>
+</div>
+
+
 

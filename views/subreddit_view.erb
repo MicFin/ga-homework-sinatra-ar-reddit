@@ -1,0 +1,13 @@
+<h1>Reddit</h1>
+<h2><%=@subreddit.title%></h2>
+<a href='/new/<%=@subreddit.id%>/submission/'>Create Submission</a>
+
+<div class="submission-container">
+<ol>
+<li><% @subreddit.submissions.each do |submission| %>
+	<a href="/reddit/submission/:id/"><%=submission.title%></a>
+	<%=submission.body%>
+</li>
+<%end%>
+</div>
+

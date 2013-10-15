@@ -27,6 +27,7 @@ end
 # Home - Shows the most popular submissions from all subreddits
 get "/reddit/" do
   @subreddits = Subreddit.all
+  @submissions = Submission.all
   erb :reddit_main_page
 end
 
@@ -36,13 +37,14 @@ get "/new/" do
 end
 
 # shows form to create a submission
-get "/new/submission/" do
+get "/new/:id/submission/" do
+  @subreddit = Subreddit.find(params[:id])
   erb :create_submission
 end
 
 # Shows the most popular submissions from a specific subreddit
-get "/r/:title" do
-  @subreddit = Subreddit.find(params[:title])
+get "/reddit/:id/" do
+  @subreddit = Subreddit.find(params[:id])
   erb :subreddit_view
 end 
 
@@ -51,8 +53,9 @@ post '/create/' do
   redirect "/reddit/"
 end
 
-post '/create/submission/' do
-  Submission.create(title: params[:title], body: params[:body])
+post '/create/:id/submission/' do
+  @subreddit = Subreddit.find(params[:id])
+  @subreddit.submissions.create(title: params[:title], body: params[:body], link:params[:link])
   redirect "/reddit/"
 end
 
