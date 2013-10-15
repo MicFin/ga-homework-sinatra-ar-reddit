@@ -7,7 +7,18 @@
 <li><% @subreddit.submissions.each do |submission| %>
 	<a href="/reddit/submission/<%=submission.id%>/"><%=submission.title%></a>
 	<%=submission.body%>
+
+	<form action="/submission/<%=submission.id%>/upvote/" method="post">
+	<input type="submit" name="up_vote" value="LOVE IT: <%=submission.up_votes%>" />
+	</form>
+
+
+
+
+
+
 </li>
 <%end%>
+</ol>
 </div>
 

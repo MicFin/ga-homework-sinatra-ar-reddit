@@ -79,4 +79,10 @@ post '/create/:id/comment/' do
   redirect "/reddit/"
 end
 
+post '/submission/:id/upvote/' do
+  @submission = Submission.find(params[:id])
+  @submission[:up_votes] += 1
+  @submission.save
+  redirect "/reddit/#{@submission.subreddit.id}/"
+end
 
